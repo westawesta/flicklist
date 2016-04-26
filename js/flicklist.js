@@ -11,7 +11,7 @@ var model = {
 
 var api = {
   root: "https://api.themoviedb.org/3",
-  token: "8e888fa39ec243e662e1fb738c42ae99",
+  token: "1968d1e523f99b9563f5cbf37e84e0e1",
   imageBaseUrl: "http://image.tmdb.org/t/p/"
 }
 
