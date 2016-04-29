@@ -1,14 +1,13 @@
 
-
+// a wrapper around 2 arrays
 var model = {
   watchlistItems: [],
   browseItems: []
 }
 
-
 var api = {
   root: "https://api.themoviedb.org/3",
-  token: "TODO" // TODO 0 put your api key here
+  token: "1968d1e523f99b9563f5cbf37e84e0e1" // TODO 0 put your api key here
 }
 
 
@@ -29,6 +28,7 @@ function discoverMovies(callback) {
 			
 			// TODO 2
 			// update the model, setting its .browseItems property equal to the movies we recieved in the response
+			model.browseItems = response.results;
 			
 			// invoke the callback function that was passed in. 
 			callback();
@@ -52,6 +52,9 @@ function render() {
   model.browseItems.forEach(function(movie) {
 		// TODO 3
 		// insert a list item into the <ul> in the browse section
+		var title = $("<p></p>").text(movie.original_title);
+		var itemView = $("<li></li>").text(title);
+		$("#section-browselist ul").append(itemView);
 		
 		// TODO 4
 		// the list item should include a button that says "Add to Watchlist"
@@ -62,10 +65,16 @@ function render() {
   
 }
 
+// to refer to them
+//	var firstMovieTitle = model.watchlistItems[0].original_title.val();
+//	console.log(firstMovieTitle);
 
 // When the HTML document is ready, we call the discoverMovies function,
 // and pass the render function as its callback
+// makes sure html loaded before doing other stuff so elements sure to be there
+// passing a function into another function
 $(document).ready(function() {
   discoverMovies(render);
+  console.log("Ready!!");
 });
 
