@@ -7,14 +7,15 @@
   TODO 3b
   add meta viewport tag
   -->
-
+  <meta name=viewport content="width=device-width, initial-scale=1">
 
   <script src="https://code.jquery.com/jquery-2.2.3.js"></script>  
 
   <!--
-  TODO 2a
+  TODO 2a-done
   add link to Bootstrap CDN
   -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
   <link rel="stylesheet" href="css/styles.css"/>
 
@@ -23,17 +24,17 @@
 <body>
 
   <!--
-  TODO 2b
+  TODO 2b-done
   give the header a class of "jumbotron"
   give the inner paragraph a class of "text-muted"
   -->
-  <header>
+  <header class="jumbotron">
     <h1>FlickList</h1>
     <p>Keep a list of all the movies you've been meaning to watch.</p>
   </header>
 
 
-  <div class="main-content">
+  <div class="container-fluid main-content">
     <!--
     TODO 3a
     put the rest of the content (both sections) inside a div with class "row", 
@@ -45,21 +46,24 @@
     unless the user is on a tablet or mobile phone, in which case, each section should
     fill the entire width, with the watchlist first and the browse list below.
     -->
+    <div class="row">
 
-    <section id="section-watchlist">
+    <section id="section-watchlist" class="col-md-5">    
       <header>
         <h2>My Watchlist</h2>
         <hr/>
       </header>
+      
+      
 
       <!-- 
       TODO 2f
       Give this list a class of "list-inline"
       -->
-      <ul></ul>
+      <ul class="list-inline"></ul>
     </section>
 
-    <section id="section-browse">
+    <section id="section-browse" class="col-md-7">
       <header>
         <h2>Browse Movies</h2>
 
@@ -70,9 +74,15 @@
         "input-group", "form-control", "input-group-btn", "btn", "btn-primary"
         -->
         <form id="form-search">
-          <input type="text" name="query"/>
-          <input type="submit" value="Search By Title"/>
+            <div class="input-group">
+              <input type="text"  class="form-control" name="query"/>
+              <span class="input-group-btn">
+                <input type="submit" class="btn btn-primary" value="Search By Title"/>
+              </span>
+            </div>
         </form>
+          
+        </header>
 
       </header>
 
@@ -83,11 +93,12 @@
       Use the following styles:
       "list-group", "list-group-item", "btn", "btn-primary", 
       -->
-      <ul></ul>
-    </section>
 
+          <ul class="list-group"></ul>
+      </section>
+    </div>
   </div>
-
+  
   <script src="js/flicklist.js"></script>
   <script>
     $("#form-search").submit(function(evt) {
