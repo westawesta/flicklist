@@ -38,6 +38,10 @@
 	margin-bottom: 2%;
 }
 
+.container-fluid {
+	color: white
+}
+
 section header {
 	margin-bottom: 10px;
 }
@@ -46,3 +50,33 @@ section {
 	padding: 2%;
 }
 
+img { 
+	display:block; 
+	height: auto; 
+	margin-left: 3%;
+	margin-right: 3%;
+	max-width: 100%; 
+}
+
+#add-to-watchlist{
+	width: 100%; 
+}
+
+.well {
+	background-color: red;
+	color: white;
+	border-width: 0px;
+}
+
+#browse-carousel {
+	max-width: 300px;	
+	margin:auto;
+}
+
+#browse-info {
+	margin:0%;
+}
+
+.carousel-inner {
+	padding-left:0px;
+}

@@ -4,13 +4,12 @@
   <meta charset="utf-8"/>
   <meta name=viewport content="width=device-width, initial-scale=1">
 
-  <script src="https://code.jquery.com/jquery-2.2.3.js"></script>  
-
-  <!--
-  TODO add bootstrap js script
-  -->
+  <script src="js/jquery-2.2.3.js"></script>  
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  
   <link rel="stylesheet" href="css/styles.css"/>
 
   <title>FlickList</title>
@@ -26,50 +25,78 @@
 
   <div class="main-content">
 
-    <section id="section-watchlist" class="col-md-5">
+    <section id="section-watchlist">
       <header>
         <h2>My Watchlist</h2>
         <hr/>
       </header>
-
-      <ul class="list-inline"></ul>
+      <ul></ul>
     </section>
 
-    <section id="section-browse" class="col-md-7">
-
-      <!-- TODO
-      Rearrange the layout of this section using the Bootstrap grid system to match the specification 
-      -->
-
+    <section id="section-browse" class="container-fluid">
+      
+      <div class="row" id="row4browse-section">
+<!A>      <div class="col-xs-8">
+<!A>    <div class="well">        
+<!A>    <div class="row" id="row4display-movie">
+<!A1>     <div class="col-xs-7" id="browse-info">
+          </div>
+<!A2>     <div class="col-xs-5" > 
+            <!START CAROUSEL>
+<!poster>   <div class="carousel slide" id="browse-carousel" data-ride="carousel">
+              <! ACTUAL CAROUSEL>
+                <div class="carousel-inner" role="listbox">
+                </div>
+              <! CONTROLS FOR CAROUSEL>          
+              <a class="left carousel-control" href="#browse-carousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+              </a>
+              <a class="right carousel-control" href="#browse-carousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+           </div>
+           <!BUTTON UNDER CAROUSEL>   
+           <button id="add-to-watchlist" class="btn btn-primary">
+             ADD TO WATCHLIST
+           </button>
+          </div>   
+        </div>          
+      </div>
+    <ul class="list-group"></ul>
+    </div>
+<!B><div class="col-xs-4">
       <header>
         <h2>Browse Movies</h2>
       </header>
       <form id="form-search">
         <div class="input-group">
           <input type="text" class="form-control" name="query"/>
+        </div>
+        <div class="input-group">
           <span class="input-group-btn">
             <input type="submit" class="btn btn-primary" value="Search By Topic"/>
           </span>
         </div>
       </form>
+    </div>
+  </div>
+</section>
 
-      <!-- 
-      TODO
-      implement a carousel inside this section
-      You can incorporate this <ul> as the .carousel-inner 
-      -->
-      <ul class="list-group"></ul>
-
-    </section>
 
   </div>
 
   <script src="js/flicklist.js"></script>
   <script>
-    $("#form-search").submit(function(evt) {
+  $(document).ready(function(){
+   $("#form-search").submit(function(evt) {
       evt.preventDefault();
       var query = $("#form-search input[name=query]").val();
       searchMovies(query, render);
+    });
+    
+    $("#add-to-watchlist").click(function() {
+      addActiveMovie();
+      render();
     });
 
     $("#browse-carousel").on("slid.bs.carousel", function() {
@@ -77,8 +104,13 @@
       var newIndex = $("#browse-carousel").find(".active").index();
       // TODO 
       // update the model and then re-render
+      model.activeMovieIndex = newIndex;
+      render();
     });
-  </script>
+    
+  });
+  searchMovies("", render);
+   </script>
 
 </body> 
 </html>
